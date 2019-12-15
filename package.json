@@ -9,8 +9,7 @@
     "build": "browserify src/script/index.js > public/bundle.js && npm run sass",
     "sass": "node-sass src/style/main.scss > public/main.css",
     "watch-js": "watchify script/index.js -o public/bundle.js -dv",
-    "watch-sass": "node-sass -w src/style/main.scss -o public",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch-sass": "node-sass -w src/style/main.scss -o public"
   },
   "repository": {
     "type": "git",
