@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "watch": "npm run watch-sass",
+    "start": "npm run watch & ecstatic public",
+    "watch": "npm run watch-sass & npm run watch-js",
+    "build": "browserify script/index.js > public/bundle.js && npm run sass",
+    "sass": "node-sass src/style/main.scss > public/main.css",
+    "watch-js": "watchify script/index.js -o public/bundle.js -dv",
     "watch-sass": "node-sass -w src/style/main.scss -o public",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,7 +24,8 @@
   "homepage": "https://github.com/nichoth/jessicas-friend#readme",
   "devDependencies": {
     "browserify": "^16.5.0",
-    "budo": "^11.6.3",
-    "node-sass": "^4.13.0"
+    "ecstatic": "^4.1.2",
+    "node-sass": "^4.13.0",
+    "watchify": "^3.11.1"
   }
 }
