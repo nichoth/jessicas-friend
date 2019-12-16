@@ -1,4 +1,12 @@
-.blue {
-    color: blue;
+.tabs {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    border-bottom: 2px solid cyan;
+
+    a {
+        text-decoration: none;
+        color: gray;
+    }
 }
 
