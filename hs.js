@@ -30,9 +30,12 @@ function read (path) {
     // console.log('key', key)
     // var obj = {}
     // obj[key] = { class: { append: 'active' } }
-    var hsCl = hyperstream({ 'a[href*="store"]': {
-        class: { append: ' active' }
-    } })
+    console.log('f', filename)
+    var cssName = filename.split('.')
+    var obj = {}
+    var key = 'a[href*="' + cssName[0] + '"]'
+    obj[key] = { class: { append: ' active' } }
+    var hsCl = hyperstream(obj)
     fs.createReadStream(tmpl)
         .pipe(hs)
         .pipe(hsCl)
