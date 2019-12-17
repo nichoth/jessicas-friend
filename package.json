@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm run watch & ecstatic public",
     "watch": "npm run watch-sass & npm run watch-js",
-    "build": "browserify src/script/index.js > public/bundle.js && npm run sass",
+    "build": "browserify src/script/index.js > public/bundle.js && npm run sass && node hs src/html/*.html --outdir public/ && cp src/html/index.html public/",
     "sass": "node-sass src/style/main.scss > public/main.css",
     "watch-js": "watchify src/script/index.js -o public/bundle.js -dv",
     "watch-sass": "node-sass -w src/style/main.scss -o public"
