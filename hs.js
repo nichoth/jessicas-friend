@@ -26,11 +26,7 @@ function read (path) {
     var tmpl = __dirname + '/src/html/_template.html'
     // need to make sure slashes / are ok here
     var write = fs.createWriteStream(outdir + filename)
-    // var key = 'a[href=' + '/' + filename + ']'
-    // console.log('key', key)
-    // var obj = {}
-    // obj[key] = { class: { append: 'active' } }
-    console.log('f', filename)
+
     var cssName = filename.split('.')
     var obj = {}
     var key = 'a[href*="' + cssName[0] + '"]'
