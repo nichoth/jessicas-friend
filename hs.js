@@ -7,8 +7,7 @@ var fs = require('fs');
 var _args = minimist(process.argv.slice(2))
 var args = _args._
 var outdir = _args.outdir
-console.log('out', outdir)
-
+// console.log('out', outdir)
 args.forEach(function (path) {
     if (path.includes('_template.html')) return
     var p = __dirname + '/' + path
@@ -18,12 +17,25 @@ args.forEach(function (path) {
 
 function read (path) {
     var hs = hyperstream({
-        'body': fs.createReadStream(path)
+        'body': {
+            _appendHtml: fs.createReadStream(path)
+        }
     })
     var filename = path.split('/')
     filename = filename[filename.length - 1]
-    var d = __dirname + '/src/html/_template.html'
+    var tmpl = __dirname + '/src/html/_template.html'
+    // need to make sure slashes / are ok here
     var write = fs.createWriteStream(outdir + filename)
-    fs.createReadStream(d).pipe(hs).pipe(write)
+    // var key = 'a[href=' + '/' + filename + ']'
+    // console.log('key', key)
+    // var obj = {}
+    // obj[key] = { class: { append: 'active' } }
+    var hsCl = hyperstream({ 'a[href*="store"]': {
+        class: { append: ' active' }
+    } })
+    fs.createReadStream(tmpl)
+        .pipe(hs)
+        .pipe(hsCl)
+        .pipe(write)
 }
 
