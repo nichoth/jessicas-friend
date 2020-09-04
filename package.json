@@ -27,7 +27,7 @@
     "html-template": "^1.2.2",
     "hyperstream": "^1.2.2",
     "minimist": "^1.2.0",
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.13.1",
     "trumpet": "^1.7.2",
     "watchify": "^3.11.1"
   }
